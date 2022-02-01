@@ -1,9 +1,11 @@
 import React from 'react'
+import Form from './Form'
 
 function App () {
   return (
     <>
-      <h1>HelloWorld</h1>
+      <h1>Brainfuck</h1>
+      <Form/>
     </>
   )
 }

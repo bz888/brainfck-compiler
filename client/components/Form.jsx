@@ -5,11 +5,18 @@ export default function Form () {
 
   }
   return (
-    <div>
-      <textarea></textarea>
-      <button onChange={handleChange}/>
-      <p>test</p>
-
-    </div>
+    <>
+      <div className='wrapper'>
+        <div className='textArea'>
+          <textarea></textarea>
+        </div>
+        <div className='btn-wrapper'>
+          <button className='compile-btn' onChange={handleChange}>Compile</button>
+        </div>
+        <div className='outPut'>
+          <p>place holding text</p>
+        </div>
+      </div>
+    </>
   )
 }

@@ -1,5 +1,5 @@
 {
-  "name": "brainfck-compiler",
+  "name": "brainfck-interpreter",
   "version": "0.1.0",
   "description": "compiler",
   "repository": "https://github.com/bz888/brainfck-compiler",

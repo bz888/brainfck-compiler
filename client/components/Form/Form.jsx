@@ -52,7 +52,7 @@ export default function Form () {
 
         <div className='info-div'>
           <div>
-            <span>Please be nice, this is a really simple interpreter and is not optimized for juice brainfuck</span>
+            <span>Please be nice, this is a really simple interpreter and is not optimized for juicy brainfuck. So please don&apos;t input an infinite loop. ty</span>
           </div>
         </div>
 

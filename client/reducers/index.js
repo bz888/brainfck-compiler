@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux'
 
-import placeHolderReducer from './placeHolder'
+import inputReducer from './inputReducer'
+import arrReducer from './arrReducer'
 
 export default combineReducers({
-  placeHolderReducer
+  inputReducer,
+  arrReducer
 })

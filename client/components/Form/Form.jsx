@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { arrVal, inputVal } from '../../actions'
 // import { compiler } from '../../compiler-function/compiler'
 import { interpreter } from '../../compiler-function/interpreter '
 import Comment from '../commentTreament/comment'
 
 export default function Form () {
+  const dispatch = useDispatch()
   const [input, setInput] = useState({
     code: '',
     memory: 100
@@ -27,7 +30,9 @@ export default function Form () {
     const interpretedVal = interpreter(input.code, input.memory)
     setVal(interpretedVal.outPutVal)
     setCommentVal(interpretedVal.commentArr)
-    console.log(interpretedVal)
+    dispatch(arrVal(interpretedVal.tape))
+    dispatch(inputVal(input.code))
+    // console.log(interpretedVal)
   }
 
   return (

@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function Comment ({ commentVal }) {
   return (
-    <div className='comments'>
-      <ul>
+    <>
+      <ul className='comments'>
         <li>{commentVal}</li>
       </ul>
-    </div>
+    </>
   )
 }

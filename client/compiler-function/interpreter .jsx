@@ -56,10 +56,10 @@ export function interpreter (input, memoryVal) {
           : loopStack.pop()
         break
       default:
-        // console.log('anything else is a comment')
-        // char === ' '
-        //   ? commentArr.push('"space"' + ' <- this will be treated as a comment')
-        //   : commentArr.push(char + ' <- this will be treated as a comment')
+        console.log('anything else is a comment')
+        char === ' '
+          ? commentArr.push('"space"' + ' this will be treated as a comment')
+          : commentArr.push(char + ' this will be treated as a comment')
         break
     }
   }

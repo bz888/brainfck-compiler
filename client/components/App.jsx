@@ -4,7 +4,7 @@ import Form from './Form/Form'
 function App () {
   return (
     <>
-      <h1 className='title'>Brainfuck Compiler</h1>
+      <h1 className='title'>Brainfuck Interpreter</h1>
       <Form/>
     </>
   )

@@ -11,7 +11,6 @@ body{
 }
 .wrapper{
   display: flex;
-  margin: auto;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -40,11 +39,17 @@ body{
   border: 1px;
   border-color: black;
   border-style: solid;
+  word-wrap: break-word;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .outPut p{
   margin: 1rem;
 }
 
+.comment{
+  color: red;
+}
 
 /* cool button */
 .compile-btn{
@@ -60,7 +65,7 @@ body{
   cursor: pointer;
 }
 .compile-btn:before {
-  content: "Compile";
+  content: "interprete";
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,12 +89,12 @@ body{
   opacity: 1;
 }
 .compile-btn:after {
-  content: "Compile";
+  content: "interprete";
   display: flex;
   justify-content: center;
   align-items: center;
   color: rgb(156, 156, 156);
-  background: rgb(34, 34, 34);
+  background: rgb(59, 59, 59);
   font-size: 28px;
   top: 0;
   left: 0;

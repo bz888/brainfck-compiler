@@ -1,5 +1,5 @@
 {
-  "name": "brainfck-compiler",
+  "name": "brainfck-interpreter",
   "version": "0.1.0",
   "description": "compiler",
   "repository": "https://github.com/bz888/brainfck-compiler",
@@ -10,6 +10,7 @@
     "dev:client": "webpack --config ./client/webpack.config.js --watch",
     "dev:server": "nodemon server",
     "webpack": "webpack --config ./client/webpack.config.js",
+    "knex": "knex --knexfile server/db/knexfile.js",
     "start": "node server",
     "build": "npm run webpack",
     "server": "node server",
@@ -57,17 +58,16 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "webpack": "^5.12.1",
-    "webpack-cli": "^4.3.1"
+    "webpack-cli": "^4.3.1",
+    "sqlite3": "^5.0.2",
+    "knex": "^0.95.4"
   },
   "dependencies": {
     "@babel/runtime": "^7.16.7",
     "core-js": "^3.20.3",
     "dotenv-webpack": "^7.1.0",
     "express": "^4.17.1",
-    "firebase": "^9.6.5",
     "framer-motion": "^6.2.4",
-    "fs": "^0.0.1-security",
-    "moment": "^2.29.1",
     "npm-run-all": "^4.1.5",
     "react-moment": "^1.1.1",
     "regenerator-runtime": "^0.13.9",

@@ -1,6 +1,4 @@
 export function interpreter (input, memoryVal) {
-  // console.log('compiler func hit: ', input)
-
   const tape = Array(memoryVal).fill(0)
   let ptr = 0
   let isLooping = false
@@ -56,16 +54,11 @@ export function interpreter (input, memoryVal) {
           : loopStack.pop()
         break
       default:
-        // console.log('anything else is a comment')
-        // char === ' '
-        //   ? commentArr.push('"space"' + ' this will be treated as a comment')
-        //   : commentArr.push(char + ' this will be treated as a comment')
         commentArr.push(char)
         continue
     }
   }
-  // const charCodeOutPutVal = tape.map(ele => String.fromCharCode(ele))
-  // console.log(outPutVal)
+
   const returnObj = {
     printedVal,
     commentArr,

@@ -67,7 +67,8 @@ export function interpreter (input, memoryVal) {
   // console.log(outPutVal)
   const returnObj = {
     outPutVal,
-    commentArr
+    commentArr,
+    tape
   }
   console.log(returnObj.commentArr)
   return returnObj

@@ -1,5 +1,6 @@
 export function interpreter (input, memoryVal) {
-  const tape = Array(memoryVal).fill(0)
+  const intMemoryVal = parseInt(memoryVal)
+  const tape = Array(intMemoryVal).fill(0)
   let ptr = 0
   let isLooping = false
   const loopStack = []

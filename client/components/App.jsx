@@ -10,13 +10,15 @@ function App () {
   const toggleState = useSelector(state => state.toggleReducer)
   return (
     <>
-      <h1 className='title'>Brainfuck Interpreter</h1>
-      <div className='wrapper'>
-        {toggleState ? <ArrDisplay/> : <Form/>}
-        <InfoText/>
-        <CommentSection/>
-        <Output/>
-      </div>
+      <React.StrictMode>
+        <h1 className='title'>Brainfuck Interpreter</h1>
+        <div className='wrapper'>
+          {toggleState ? <ArrDisplay/> : <Form/>}
+          <InfoText/>
+          <CommentSection/>
+          <Output/>
+        </div>
+      </React.StrictMode>
     </>
   )
 }

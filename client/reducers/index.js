@@ -6,6 +6,8 @@ import commentReducer from './commentReducer'
 import toggleReducer from './toggleReducer'
 import inputReducer from './inputReducer'
 import memoryReducer from './memoryReducer'
+import dbReducer from './dbReducer'
+import dbIDReducer from './dbIDReducer'
 
 export default combineReducers({
   outputReducer,
@@ -13,5 +15,7 @@ export default combineReducers({
   commentReducer,
   toggleReducer,
   inputReducer,
-  memoryReducer
+  memoryReducer,
+  dbReducer,
+  dbIDReducer
 })

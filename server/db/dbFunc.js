@@ -1,7 +1,8 @@
 const connection = require('./connection')
 
 module.exports = {
-  getById
+  getById,
+  getData
 }
 
 function getById (id, db = connection) {
@@ -9,4 +10,8 @@ function getById (id, db = connection) {
     .where('id', id)
     .select()
     .first()
+}
+function getData (db = connection) {
+  return db('bfdata')
+    .select()
 }

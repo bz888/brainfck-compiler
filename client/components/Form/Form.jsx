@@ -23,9 +23,12 @@ export default function Form () {
   }, [dbIDdata])
 
   function renderDBdata () {
-    !isNaN(dbIDdata)
-      ? console.log('invalid data')
-      : setInput(() => ({ ...input, code: dbIDdata.bfcode, memory: dbIDdata.memory }))
+    if (!isNaN(dbIDdata)) {
+      console.log('invalid data')
+    } else {
+      setInput(() => ({ ...input, code: dbIDdata.bfcode, memory: dbIDdata.memory }))
+      dispatch(commentVal(dbIDdata.comments))
+    }
   }
 
   const placeHoldingComments = ['Only: + - , . [ ] < > are acceptable', 'All other input will be treated as a comment']

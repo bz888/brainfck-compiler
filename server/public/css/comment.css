@@ -1,7 +1,9 @@
-.comments{
+/* .comments{
   color: rgb(134, 134, 134);
   list-style-type: square;
-}
+} */
+
+
 
 .comment-div{
   grid-area: 3 / 2 / 4 / 3; 
@@ -18,11 +20,14 @@
   border: 1px;
   border-color: black;
   border-style: solid;
-  /* word-wrap: break-word; */
-  overflow-x: hidden;
+  word-wrap: break-word;
+  /* overflow-x: hidden; */
   overflow-y: scroll;
   position:absolute;
   bottom: 0;
+}
+.comment-div div p{
+  margin: 1rem;
 }
 .comment-div div::-webkit-scrollbar {
   display: none;

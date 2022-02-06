@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { arrVal, clickStateVal, commentVal, inputVal, memoryVal, outputVal } from '../../actions'
 import { interpreter } from '../../compiler-function/interpreter '
@@ -11,14 +11,10 @@ export default function Form () {
     code: priorInput,
     memory: priorMemorySize
   })
-  // const [val, setVal] = useState('Code output')
 
-  // useEffect(() => {
-  //   // console.log('val change: ', val)
-  // }, [])
+  const placeHoldingComments = ['Only: + - , . [ ] < > are acceptable', 'All other input will be treated as a comment']
 
   function handleInput (e) {
-    // console.log('input value: ', e.target.value)
     const value = e.target.value
     const name = e.target.name
     setInput({ ...input, [name]: value })
@@ -31,7 +27,7 @@ export default function Form () {
     console.log(input.code)
 
     dispatch(clickStateVal(true))
-    dispatch(commentVal(interpretedVal.commentArr))
+    dispatch(commentVal(interpretedVal.commentArr.length === 0 ? placeHoldingComments : interpretedVal.commentArr))
     dispatch(arrVal(interpretedVal.tape))
     dispatch(inputVal(input.code))
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import CommentVals from './CommentVals'
+// import CommentVals from './CommentVals'
 
 export default function CommentSection () {
   const commentsArr = useSelector(state => state.commentReducer)
@@ -9,14 +9,20 @@ export default function CommentSection () {
   return (
     <div className='comment-div'>
       <div>
-        {commentsArr && commentsArr.map((inputComment, idx) => {
+        {/* {commentsArr && commentsArr.map((inputComment, idx) => {
           return (
             <CommentVals
               key={idx}
               commentVal={inputComment}
             />
           )
-        })}
+        })} */}
+        <p>
+          Comments:
+          <br></br>
+          <br></br>
+          {commentsArr}
+        </p>
       </div>
     </div>
   )

@@ -30,8 +30,8 @@ export default function ArrDisplay () {
           <table>
             <thead>
               <tr>
-                <th>index</th>
-                <th>value</th>
+                <th>Address</th>
+                <th>Value</th>
               </tr>
             </thead>
             <tbody>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Comment ({ commentVal }) {
+export default function CommentVals ({ commentVal }) {
   return (
     <>
       <ul className='comments'>

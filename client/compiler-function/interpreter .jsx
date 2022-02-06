@@ -6,7 +6,7 @@ export function interpreter (input, memoryVal) {
   let isLooping = false
   const loopStack = []
   let innerLoops = 0
-  const outPutVal = []
+  const printedVal = []
   const commentArr = []
 
   for (let i = 0; i < input.length; i++) {
@@ -34,7 +34,7 @@ export function interpreter (input, memoryVal) {
         // can use redux to print string
         console.log(String.fromCharCode(tape[ptr]))
 
-        outPutVal.push(String.fromCharCode(tape[ptr]))
+        printedVal.push(String.fromCharCode(tape[ptr]))
         break
       case '>':
         ptr++
@@ -56,17 +56,18 @@ export function interpreter (input, memoryVal) {
           : loopStack.pop()
         break
       default:
-        console.log('anything else is a comment')
-        char === ' '
-          ? commentArr.push('"space"' + ' this will be treated as a comment')
-          : commentArr.push(char + ' this will be treated as a comment')
-        break
+        // console.log('anything else is a comment')
+        // char === ' '
+        //   ? commentArr.push('"space"' + ' this will be treated as a comment')
+        //   : commentArr.push(char + ' this will be treated as a comment')
+        commentArr.push(char)
+        continue
     }
   }
   // const charCodeOutPutVal = tape.map(ele => String.fromCharCode(ele))
   // console.log(outPutVal)
   const returnObj = {
-    outPutVal,
+    printedVal,
     commentArr,
     tape
   }

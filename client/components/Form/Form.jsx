@@ -1,83 +1,56 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { arrVal, inputVal } from '../../actions'
-// import { compiler } from '../../compiler-function/compiler'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { arrVal, clickStateVal, commentVal, inputVal, memoryVal, outputVal } from '../../actions'
 import { interpreter } from '../../compiler-function/interpreter '
-import Comment from '../commentTreament/comment'
 
 export default function Form () {
+  const priorInput = useSelector(state => state.inputReducer)
+  const priorMemorySize = useSelector(state => state.memoryReducer)
   const dispatch = useDispatch()
   const [input, setInput] = useState({
-    code: '',
-    memory: 100
+    code: priorInput,
+    memory: priorMemorySize
   })
-  const [val, setVal] = useState('Code output')
-  const [commentVal, setCommentVal] = useState(['Only: + - , . [ ] < > are are acceptable', 'All other input will be treated as a comment'])
 
-  useEffect(() => {
-    console.log('val change: ', val)
-  }, [val])
+  const placeHoldingComments = ['Only: + - , . [ ] < > are acceptable', 'All other input will be treated as a comment']
 
   function handleInput (e) {
-    // console.log('input value: ', e.target.value)
     const value = e.target.value
     const name = e.target.name
     setInput({ ...input, [name]: value })
   }
   function handleSubmit (e) {
     e.preventDefault()
-    console.log(input.memory)
-    const interpretedVal = interpreter(input.code, input.memory)
-    setVal(interpretedVal.outPutVal)
-    setCommentVal(interpretedVal.commentArr)
+    console.log(parseInt(input.memory))
+    const interpretedVal = interpreter(input.code, parseInt(input.memory))
+    console.log(interpretedVal)
+    console.log(input.code)
+
+    dispatch(clickStateVal(true))
+    dispatch(commentVal(interpretedVal.commentArr.length === 0 ? placeHoldingComments : interpretedVal.commentArr))
     dispatch(arrVal(interpretedVal.tape))
     dispatch(inputVal(input.code))
-    // console.log(interpretedVal)
+
+    dispatch(memoryVal(parseInt(input.memory)))
+
+    dispatch(outputVal(interpretedVal.printedVal))
   }
 
   return (
     <>
-      <div className='wrapper'>
-
-        <div className='memory-div'>
-          <div>
-            <label htmlFor='memorySize'>Memory size: </label>
-            <input id='memorySize' required='required' value={input.memory} name='memory' type='number' placeholder='memory size' onChange={handleInput}/>
-          </div>
+      <div className='memory-div'>
+        <div>
+          <label htmlFor='memorySize'>Memory size: </label>
+          <input id='memorySize' required='required' value={parseInt(input.memory)} name='memory' type='number' placeholder='memory size' onChange={handleInput}/>
         </div>
+      </div>
 
-        <div className='form'>
-          <div className='textArea'>
-            <textarea placeholder='bf code' value={input.code} name='code' onChange={handleInput}></textarea>
-          </div>
-          <div className='btn-wrapper'>
-            <button className='compile-btn' onClick={handleSubmit}>Compile</button>
-          </div>
+      <div className='form'>
+        <div className='textArea'>
+          <textarea placeholder='bf code' value={input.code} name='code' onChange={handleInput}></textarea>
         </div>
-
-        <div className='info-div'>
-          <div>
-            <span>Please be nice, this is a really simple interpreter and is not optimized for juicy brainfuck. So please don&apos;t input an infinite loop. ty</span>
-          </div>
-        </div>
-
-        <div className='outPut'>
-          <div>
-            <p className='outPutVal' >{val}</p>
-          </div>
-        </div>
-
-        <div className='comment-div'>
-          <div>
-            {commentVal && commentVal.map((inputComment, idx) => {
-              return (
-                <Comment
-                  key={idx}
-                  commentVal={inputComment}
-                />
-              )
-            })}
-          </div>
+        <div className='btn-wrapper'>
+          <button className='compile-btn' onClick={handleSubmit}>Compile</button>
         </div>
       </div>
     </>

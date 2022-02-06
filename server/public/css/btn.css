@@ -1,0 +1,142 @@
+.btn-wrapper{
+  display: flex;
+  width: 30rem;
+  height: 4rem;
+  margin-top: 1.5rem;
+}
+.compile-btn{
+  border: 1px;
+  border-style: solid;
+  color: transparent;
+  border-color: black;
+  /* padding: 40px 100%; */
+  width: 100%;
+  font-size: 1.6rem;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 5px;
+  transition: all 0.5s;
+  position: relative;
+  background-color: white;
+  cursor: pointer;
+}
+.compile-btn:before {
+  content: "run";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(204, 204, 204);
+  background: rgb(34, 34, 34);
+  font-size: 1.6rem;
+  top: 0;
+  left: 100%;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 5px;
+  transition: all 1s;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform: scale(0) rotatey(0);
+  opacity: 0;
+}
+.compile-btn:hover:before {
+  transform: scale(1) rotatey(360deg);
+  left: 0;
+  opacity: 1;
+}
+.compile-btn:after {
+  content: "run";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(156, 156, 156);
+  background: rgb(80, 80, 80);
+  font-size: 1.6rem;
+  top: 0;
+  left: 0;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 5px;
+  transition: all 1s;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform: scale(1) rotatey(0);
+  opacity: 1;
+}
+.compile-btn:hover:after {
+  transform: scale(0) rotatey(360deg);
+  left: -100%;
+  opacity: 0;
+}
+
+
+
+/* edit button */
+.btn-wrapper{
+  display: flex;
+  width: 30rem;
+  height: 4rem;
+  margin-top: 1.5rem;
+}
+.edit-btn{
+  border: 1px;
+  border-style: solid;
+  color: transparent;
+  border-color: black;
+  /* padding: 40px 100%; */
+  width: 100%;
+  font-size: 1.6rem;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 5px;
+  transition: all 0.5s;
+  position: relative;
+  background-color: white;
+  cursor: pointer;
+}
+.edit-btn:before {
+  content: "edit";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(204, 204, 204);
+  background: rgb(34, 34, 34);
+  font-size: 1.6rem;
+  top: 0;
+  left: 100%;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 5px;
+  transition: all 1s;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform: scale(0) rotatey(0);
+  opacity: 0;
+}
+.edit-btn:hover:before {
+  transform: scale(1) rotatey(360deg);
+  left: 0;
+  opacity: 1;
+}
+.edit-btn:after {
+  content: "edit";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(156, 156, 156);
+  background: rgb(80, 80, 80);
+  font-size: 1.6rem;
+  top: 0;
+  left: 0;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 5px;
+  transition: all 1s;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform: scale(1) rotatey(0);
+  opacity: 1;
+}
+.edit-btn:hover:after {
+  transform: scale(0) rotatey(360deg);
+  left: -100%;
+  opacity: 0;
+}

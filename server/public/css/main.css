@@ -17,7 +17,18 @@ body{
   grid-template-rows: 0.2fr repeat(2, 1fr);
   /* gap: 0.8rem; */
 }
-.form{
+
+.table-div{
+  grid-area: 2 / 1 / 4 / 2;
+  width: 30rem;
+  height: 39.5rem;
+  border: 1px solid black;
+  overflow-y: scroll;
+}
+.table-div table{
+  margin: 1rem;
+}
+.arrDisplay-div{
   grid-area: 2 / 1 / 4 / 2;
   display: flex;
   justify-content: space-between;
@@ -25,21 +36,7 @@ body{
   flex-direction: column;
   gap: 0.6rem;
 }
-#memorySize {
-  margin: 10px;
-}
-.textArea{
-  position: relative;
-  margin: auto;
-  justify-content: center;
-}
-.textArea textarea{
-  width: 30rem;
-  height: 39.5rem;
-  border: 1px solid black;
-  box-sizing: border-box;
-  resize: none;
-}
+
 
 .info-div{
   grid-area: 1 / 2 / 2 / 3; 
@@ -52,133 +49,4 @@ body{
   height: auto;
 }
 
-.outPut{
-  grid-area: 2 / 2 / 3 / 3;
-  display: flex;
-  justify-content: center;
-  /* align-items: center; */
-}
-.outPut p{
-  margin: 1rem;
-}
-.outPut div{
-  width: 30rem;
-  height: 22rem;
-  border: 1px;
-  border-color: black;
-  border-style: solid;
-  word-wrap: break-word;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-.comments{
-  color: rgb(134, 134, 134);
-  list-style-type: square;
-}
 
-.comment-div{
-  grid-area: 3 / 2 / 4 / 3; 
-  display: flex;
-  justify-content: center;
-  /* align-items:center; */
-  border: none;
-  position: relative;
-
-}
-.comment-div div{
-  width: 30rem;
-  height: 21.5rem;
-  border: 1px;
-  border-color: black;
-  border-style: solid;
-  /* word-wrap: break-word; */
-  overflow-x: hidden;
-  overflow-y: scroll;
-  position:absolute;
-  bottom: 0;
-}
-.comment-div div::-webkit-scrollbar {
-  display: none;
-}
-
-.memory-div{
-  grid-area: 1 / 1 / 2 / 2; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.memory-div div{
-  width: 30rem;
-  height: auto;
-}
-
-/* cool button */
-.btn-wrapper{
-  display: flex;
-  width: 30rem;
-  height: 4rem;
-  margin-top: 1.5rem;
-}
-.compile-btn{
-  border: 1px;
-  border-style: solid;
-  color: transparent;
-  border-color: black;
-  /* padding: 40px 100%; */
-  width: 100%;
-  font-size: 1.6rem;
-  font-family: 'Times New Roman', Times, serif;
-  letter-spacing: 5px;
-  transition: all 0.5s;
-  position: relative;
-  background-color: white;
-  cursor: pointer;
-}
-.compile-btn:before {
-  content: "run";
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgb(204, 204, 204);
-  background: rgb(34, 34, 34);
-  font-size: 1.6rem;
-  top: 0;
-  left: 100%;
-  font-family: 'Times New Roman', Times, serif;
-  letter-spacing: 5px;
-  transition: all 1s;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  transform: scale(0) rotatey(0);
-  opacity: 0;
-}
-.compile-btn:hover:before {
-  transform: scale(1) rotatey(360deg);
-  left: 0;
-  opacity: 1;
-}
-.compile-btn:after {
-  content: "run";
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgb(156, 156, 156);
-  background: rgb(80, 80, 80);
-  font-size: 1.6rem;
-  top: 0;
-  left: 0;
-  font-family: 'Times New Roman', Times, serif;
-  letter-spacing: 5px;
-  transition: all 1s;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  transform: scale(1) rotatey(0);
-  opacity: 1;
-}
-.compile-btn:hover:after {
-  transform: scale(0) rotatey(360deg);
-  left: -100%;
-  opacity: 0;
-}

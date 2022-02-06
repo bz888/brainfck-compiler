@@ -4,7 +4,7 @@ import ArrContent from './ArrContent'
 
 export default function ArrDisplay () {
   const arrData = useSelector(state => state.arrReducer)
-  const [arrState, setArrState] = useState([])
+  // const [arrState, setArrState] = useState([])
 
   useEffect(() => {
     console.log(arrData)
@@ -12,7 +12,6 @@ export default function ArrDisplay () {
 
   return (
     <div>
-
       <table>
         <thead>
           <tr>

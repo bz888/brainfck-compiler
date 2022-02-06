@@ -2,15 +2,14 @@ const path = require('path')
 const express = require('express')
 
 // const products = require('./routes/products')
-// const orders = require('./routes/orders')
+const dbRoutes = require('./routes/db')
 
 const server = express()
 
 server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
 
-// server.use('/api/v1/products', products)
-// server.use('/api/v1/orders', orders)
+server.use('/api/v1/bfdata', dbRoutes)
 
 // For the client side BrowserRouter - because there is no '#' to distinguish
 // between client and server side routes, this sends back the index.html

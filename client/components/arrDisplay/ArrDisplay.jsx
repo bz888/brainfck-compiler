@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { clickStateVal, outputVal } from '../../actions'
+import { clickStateVal } from '../../actions'
 import ArrContent from './ArrContent'
 
 export default function ArrDisplay () {
   const arrData = useSelector(state => state.arrReducer)
-  const inputData = useSelector(state => state.outputReducer)
+  const memorySize = useSelector(state => state.memoryReducer)
   const dispatch = useDispatch()
-  // const [arrState, setArrState] = useState([])
 
   useEffect(() => {
     console.log(arrData)
@@ -16,7 +15,6 @@ export default function ArrDisplay () {
   function handleSubmit (e) {
     e.preventDefault()
     dispatch(clickStateVal(false))
-    dispatch(outputVal(inputData))
   }
 
   return (
@@ -24,7 +22,7 @@ export default function ArrDisplay () {
       <div className='memory-div'>
         <div>
           <label htmlFor='memorySize'>Memory size: </label>
-          <span>100</span>
+          <span>{memorySize}</span>
         </div>
       </div>
       <div className='arrDisplay-div'>

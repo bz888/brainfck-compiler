@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { arrVal, clickStateVal, commentVal, inputVal, outputVal } from '../../actions'
+import { arrVal, clickStateVal, commentVal, inputVal, memoryVal, outputVal } from '../../actions'
 import { interpreter } from '../../compiler-function/interpreter '
 
 export default function Form () {
   const priorInput = useSelector(state => state.inputReducer)
+  const priorMemorySize = useSelector(state => state.memoryReducer)
   const dispatch = useDispatch()
   const [input, setInput] = useState({
-    code: '',
-    memory: 10
+    code: priorInput,
+    memory: priorMemorySize
   })
   // const [val, setVal] = useState('Code output')
 
@@ -24,8 +25,8 @@ export default function Form () {
   }
   function handleSubmit (e) {
     e.preventDefault()
-    console.log(input.memory)
-    const interpretedVal = interpreter(input.code, input.memory)
+    console.log(parseInt(input.memory))
+    const interpretedVal = interpreter(input.code, parseInt(input.memory))
     console.log(interpretedVal)
     console.log(input.code)
 
@@ -33,6 +34,8 @@ export default function Form () {
     dispatch(commentVal(interpretedVal.commentArr))
     dispatch(arrVal(interpretedVal.tape))
     dispatch(inputVal(input.code))
+
+    dispatch(memoryVal(parseInt(input.memory)))
 
     dispatch(outputVal(interpretedVal.printedVal))
   }
@@ -42,7 +45,7 @@ export default function Form () {
       <div className='memory-div'>
         <div>
           <label htmlFor='memorySize'>Memory size: </label>
-          <input id='memorySize' required='required' value={input.memory} name='memory' type='number' placeholder='memory size' onChange={handleInput}/>
+          <input id='memorySize' required='required' value={parseInt(input.memory)} name='memory' type='number' placeholder='memory size' onChange={handleInput}/>
         </div>
       </div>
 

@@ -3,6 +3,7 @@ export const OUTPUT_VAL = 'OUTPUT_VAL'
 export const ARR_VAL = 'ARR_VAL'
 export const COMMENT_ARR_VAL = 'COMMENT_ARR_VAL'
 export const CLICK_STATE_VAL = 'CLICK_STATE_VAL'
+export const MEMORY_VAL = 'MEMORY_VAL'
 
 export function outputVal (output) {
   return {
@@ -35,5 +36,12 @@ export function clickStateVal (toggle) {
   return {
     type: CLICK_STATE_VAL,
     toggle
+  }
+}
+
+export function memoryVal (memorySize) {
+  return {
+    type: MEMORY_VAL,
+    memorySize
   }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { clickStateVal } from '../../actions'
+import { clickStateVal, dataIDReset } from '../../actions'
 import ArrContent from './ArrContent'
 
 export default function ArrDisplay () {
@@ -8,13 +8,14 @@ export default function ArrDisplay () {
   const memorySize = useSelector(state => state.memoryReducer)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    console.log(arrData)
-  }, [arrData])
+  // useEffect(() => {
+  //   console.log(arrData)
+  // }, [arrData])
 
   function handleSubmit (e) {
     e.preventDefault()
     dispatch(clickStateVal(false))
+    // dispatch(dataIDReset())
   }
 
   return (

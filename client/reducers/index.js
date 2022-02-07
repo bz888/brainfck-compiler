@@ -8,6 +8,7 @@ import inputReducer from './inputReducer'
 import memoryReducer from './memoryReducer'
 import dbReducer from './dbReducer'
 import dbIDReducer from './dbIDReducer'
+import loadToggleReducer from './loadToggle'
 
 export default combineReducers({
   outputReducer,
@@ -17,5 +18,6 @@ export default combineReducers({
   inputReducer,
   memoryReducer,
   dbReducer,
-  dbIDReducer
+  dbIDReducer,
+  loadToggleReducer
 })

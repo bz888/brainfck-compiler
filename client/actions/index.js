@@ -12,6 +12,8 @@ export const GET_SUCCESS = 'GET_SUCCESS'
 
 export const GET_ID_PENDING = 'GET_ID_PENDING'
 export const GET_ID_SUCCESS = 'GET_ID_SUCCESS'
+export const GET_ID_RESET = 'GET_ID_RESET'
+export const LOAD_TOGGLE = 'LOAD_TOGGLE'
 
 export function outputVal (output) {
   return {
@@ -67,12 +69,41 @@ export function getIDSuccess (data) {
   }
 }
 
+export function dataIDReset () {
+  return {
+    type: GET_ID_RESET,
+    initState: {
+      id: '',
+      name: '',
+      bfcode: '',
+      comments: '',
+      memory: ''
+    }
+  }
+}
+export function loadToggle (toggle) {
+  return {
+    type: LOAD_TOGGLE,
+    toggle
+  }
+}
+
 export function getDataIDAction (id) {
   return (dispatch) => {
     dispatch(getIDPending())
     return getDataById(id)
       .then((data) => {
         dispatch(getIDSuccess(data))
+        return data
+      })
+      .then(idData => {
+        dispatch(memoryVal(idData.memory))
+        dispatch(inputVal(idData.bfcode))
+        dispatch(commentVal(idData.comments))
+        return null
+      })
+      .then(() => {
+        dispatch(loadToggle(true))
         return null
       })
       .catch(err => {

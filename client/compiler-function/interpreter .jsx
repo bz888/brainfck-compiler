@@ -31,7 +31,7 @@ export function interpreter (input, memoryVal) {
         break
       case '.':
         // can use redux to print string
-        console.log(String.fromCharCode(tape[ptr]))
+        // console.log(String.fromCharCode(tape[ptr]))
 
         printedVal.push(String.fromCharCode(tape[ptr]))
         break

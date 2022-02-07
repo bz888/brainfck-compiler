@@ -1,5 +1,6 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { getDataAction } from '../actions'
 import ArrDisplay from './arrDisplay/ArrDisplay'
 import CommentSection from './commentTreament/CommentSection'
 import Form from './Form/Form'
@@ -7,6 +8,10 @@ import InfoText from './InfoText/InfoText'
 import Output from './Output/Output'
 
 function App () {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getDataAction())
+  }, [])
   const toggleState = useSelector(state => state.toggleReducer)
   return (
     <>

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { commentVal, getDataIDAction } from '../../../actions'
+import { getDataIDAction } from '../../../actions'
 import SelectOption from './SelectOption'
 export default function SelectMenu () {
   const dbData = useSelector(state => state.dbReducer)
@@ -19,12 +19,11 @@ export default function SelectMenu () {
 
   function handleChange (e) {
     e.preventDefault()
-    console.log(e.target.value)
+    // console.log(e.target.value)
     const idVal = e.target.value
     // setIdValState(idVal)
     if (idVal !== 'none' && idVal !== undefined) {
       dispatch(getDataIDAction(idVal))
-      // setLocalToggle(!localToggle)
     } else {
       console.log('invalid selection')
     }

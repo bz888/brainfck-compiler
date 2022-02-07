@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { arrVal, clickStateVal, commentVal, getDataAction, inputVal, memoryVal, outputVal } from '../../actions'
+import { arrVal, clickStateVal, commentVal, inputVal, loadToggle, memoryVal, outputVal } from '../../actions'
 import { interpreter } from '../../compiler-function/interpreter '
 import SelectMenu from './selectMenu/SelectMenu'
 
@@ -8,41 +8,38 @@ export default function Form () {
   const priorInput = useSelector(state => state.inputReducer)
   const priorMemorySize = useSelector(state => state.memoryReducer)
   const dbIDdata = useSelector(state => state.dbIDReducer)
+  const loadToggleVal = useSelector(state => state.loadToggleReducer)
 
   const dispatch = useDispatch()
   const [input, setInput] = useState({
     code: priorInput,
-    memory: priorMemorySize
+    memory: 30
   })
-  useEffect(() => {
-    dispatch(getDataAction())
-  }, [])
 
   useEffect(() => {
-    renderDBdata()
-  }, [dbIDdata])
-
-  function renderDBdata () {
-    if (!isNaN(dbIDdata)) {
-      console.log('invalid data')
-    } else {
+    // console.log(priorInput)
+    // console.log(dbIDdata.bfcode)
+    if (priorInput === dbIDdata.bfcode && loadToggleVal) {
       setInput(() => ({ ...input, code: dbIDdata.bfcode, memory: dbIDdata.memory }))
-      dispatch(commentVal(dbIDdata.comments))
+    } else {
+      setInput(() => ({ ...input, code: priorInput, memory: priorMemorySize }))
     }
-  }
+    console.log(input)
+  }, [loadToggleVal])
 
   const placeHoldingComments = ['Only: + - , . [ ] < > are acceptable', 'All other input will be treated as a comment']
 
   function handleInput (e) {
     const value = e.target.value
     const name = e.target.name
+    // console.log(e.target.value)
     setInput({ ...input, [name]: value })
   }
   function handleSubmit (e) {
     e.preventDefault()
     // console.log(parseInt(input.memory))
     const interpretedVal = interpreter(input.code, input.memory)
-    console.log(interpretedVal)
+    // console.log(interpretedVal)
     console.log(input.code)
 
     dispatch(clickStateVal(true))
@@ -53,6 +50,7 @@ export default function Form () {
     dispatch(memoryVal(input.memory))
 
     dispatch(outputVal(interpretedVal.printedVal))
+    dispatch(loadToggle(false))
   }
 
   return (

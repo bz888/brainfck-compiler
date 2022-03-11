@@ -34,10 +34,10 @@ module.exports = {
       max: 10
     },
     migrations: {
-      tableName: 'bfdata'
+      tableName: 'knex_migrations'
     },
-    seed: {
-      tableName: 'bfdata'
+    seeds: {
+      tableName: 'knex_seeds'
     }
   }
 }

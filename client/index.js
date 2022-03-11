@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 
 import reducers from './reducers'
 import App from './components/App'
+import { FormProvider } from './context/useContext'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducers, composeEnhancers(
@@ -17,7 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
   render(
     <Provider store={store}>
       <Router>
-        <App />
+        <FormProvider>
+          <App />
+        </FormProvider>
       </Router>
     </Provider>,
     document.getElementById('app')

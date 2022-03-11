@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { arrVal, clickStateVal, commentVal, inputVal, loadToggle, memoryVal, outputVal } from '../../actions'
 import { interpreter } from '../../compiler-function/interpreter '
+import { useGlobalStateVal } from '../../context/useContext'
 import SelectMenu from './selectMenu/SelectMenu'
 
 export default function Form () {
-  const priorInput = useSelector(state => state.inputReducer)
-  const priorMemorySize = useSelector(state => state.memoryReducer)
-  const dbIDdata = useSelector(state => state.dbIDReducer)
-  const loadToggleVal = useSelector(state => state.loadToggleReducer)
+  const { setToggle, setLoading, loading } = useGlobalStateVal()
+  // const priorInput = useSelector(state => state.inputReducer)
+  // const priorMemorySize = useSelector(state => state.memoryReducer)
+  // const dbIDdata = useSelector(state => state.dbIDReducer)
+  // const loadToggleVal = useSelector(state => state.loadToggleReducer)
 
   const dispatch = useDispatch()
   const [input, setInput] = useState({
@@ -19,12 +21,12 @@ export default function Form () {
   useEffect(() => {
     // console.log(priorInput)
     // console.log(dbIDdata.bfcode)
-    if (priorInput === dbIDdata.bfcode && loadToggleVal) {
-      setInput(() => ({ ...input, code: dbIDdata.bfcode, memory: dbIDdata.memory }))
-    } else {
-      setInput(() => ({ ...input, code: priorInput, memory: priorMemorySize }))
-    }
-    console.log(input)
+    // if (priorInput === dbIDdata.bfcode && loadToggleVal) {
+    //   setInput(() => ({ ...input, code: dbIDdata.bfcode, memory: dbIDdata.memory }))
+    // } else {
+    //   setInput(() => ({ ...input, code: priorInput, memory: priorMemorySize }))
+    // }
+    // console.log(input)
   }, [loadToggleVal])
 
   const placeHoldingComments = ['Only: + - , . [ ] < > are acceptable', 'All other input will be treated as a comment']
@@ -50,7 +52,10 @@ export default function Form () {
     dispatch(memoryVal(input.memory))
 
     dispatch(outputVal(interpretedVal.printedVal))
-    dispatch(loadToggle(false))
+    // dispatch(loadToggle(false))
+
+    // render ArrDisplay component
+    setToggle(true)
   }
 
   return (

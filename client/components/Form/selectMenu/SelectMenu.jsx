@@ -1,37 +1,49 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { getDataIDAction } from '../../../actions'
+import React, { useEffect, useState } from 'react'
+import { getData, getDataById } from '../../../api/api'
+import { useGlobalStateVal } from '../../../context/useContext'
 import SelectOption from './SelectOption'
 export default function SelectMenu () {
-  const dbData = useSelector(state => state.dbReducer)
-  // const dbIDdata = useSelector(state => state.dbIDReducer)
-  const dispatch = useDispatch()
+  const { setCommentVal, setInput, input, placeHoldingComments } = useGlobalStateVal()
+  const [dbData, setDbData] = useState([])
 
-  // const [localToggle, setLocalToggle] = useState(false)
-  // const [idValState, setIdValState] = useState('')
+  useEffect(() => {
+    fetchData()
+  }, [])
 
-  // useEffect(() => {
-  //   if (idValState !== '' && idValState !== 'none') {
-  //     dispatch(commentVal(dbIDdata.comments))
-  //     console.log(dbIDdata.comments)
-  //   }
-  // }, [localToggle])
+  function fetchData () {
+    return getData()
+      .then(data => {
+        setDbData(data)
+        return null
+      })
+      .catch(err => {
+        console.error('FETCH FUNC: ' + err.message)
+      })
+  }
+  function fetchById (id) {
+    return getDataById(id)
+      .then(idData => {
+        setCommentVal(idData.comments)
+        setInput({ ...input, code: idData.bfcode, memory: idData.memory })
+        return null
+      })
+      .catch(err => console.error('FETCH ID' + err.message))
+  }
 
   function handleChange (e) {
     e.preventDefault()
-    // console.log(e.target.value)
     const idVal = e.target.value
-    // setIdValState(idVal)
-    if (idVal !== 'none' && idVal !== undefined) {
-      dispatch(getDataIDAction(idVal))
+    if (idVal === 'none') {
+      setInput({ ...input, code: '', memory: 30 })
+      setCommentVal(placeHoldingComments)
     } else {
-      console.log('invalid selection')
+      fetchById(idVal)
     }
   }
 
   return (
     <>
-      <label htmlFor='preload-menu'>Load</label>
+      <label htmlFor='preload-menu'>Load </label>
       <select id='preload-menu' onChange={handleChange}>
         <option value='none'>None</option>
         {dbData && dbData.map((ele, idx) => {

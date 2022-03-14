@@ -7,13 +7,28 @@ export function useGlobalStateVal () {
 }
 
 export function FormProvider ({ children }) {
+  const placeHoldingComments = ['Only: + - , . [ ] < > are acceptable', 'All other input will be treated as a comment']
+  const [commentVal, setCommentVal] = useState(placeHoldingComments)
   const [toggle, setToggle] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [outputVal, setOutputVal] = useState(['Code output'])
+  // const [loading, setLoading] = useState(false)
+  const [arrDisplay, setArrDisplay] = useState([])
+  const [input, setInput] = useState({ code: '', memory: 30 })
+
   const value = {
-    loading,
-    setLoading,
+    // loading,
+    // setLoading,
+    setOutputVal,
+    outputVal,
     toggle,
-    setToggle
+    setToggle,
+    commentVal,
+    setCommentVal,
+    arrDisplay,
+    setArrDisplay,
+    input,
+    setInput,
+    placeHoldingComments
   }
   return (
     <FormContext.Provider value={value}>

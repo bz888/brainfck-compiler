@@ -1,17 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
+import { useGlobalStateVal } from '../../context/useContext'
 
 export default function CommentSection () {
-  const commentsArr = useSelector(state => state.commentReducer)
-  const [updateComment, setUpdateComment] = useState([])
+  const { commentVal } = useGlobalStateVal()
 
-  const placeHoldingComments = ['Only: + - , . [ ] < > are acceptable', 'All other input will be treated as a comment']
-
-  useEffect(() => {
-    commentsArr === ''
-      ? setUpdateComment(placeHoldingComments)
-      : setUpdateComment(commentsArr)
-  }, [commentsArr])
   return (
     <div className='comment-div'>
       <div>
@@ -19,7 +11,7 @@ export default function CommentSection () {
           Comments:
           <br></br>
           <br></br>
-          {updateComment}
+          {commentVal && commentVal}
         </p>
       </div>
     </div>

@@ -1,7 +1,4 @@
-import React, { useEffect } from 'react'
-// import { useSelector, useDispatch } from 'react-redux'
-// import { getDataAction } from '../actions'
-import { getData } from '../api/api'
+import React from 'react'
 import { useGlobalStateVal } from '../context/useContext'
 import ArrDisplay from './arrDisplay/ArrDisplay'
 import CommentSection from './commentTreament/CommentSection'
@@ -10,18 +7,13 @@ import InfoText from './InfoText/InfoText'
 import Output from './Output/Output'
 
 function App () {
-  // const dispatch = useDispatch()
-  useEffect(() => {
-    getData()
-  }, [])
-  // const toggleState = useSelector(state => state.toggleReducer)
-  const { toggle, loading } = useGlobalStateVal()
+  const { toggle } = useGlobalStateVal()
   return (
     <>
       <React.StrictMode>
         <h1 className='title'>Brainfuck Interpreter</h1>
         <div className='wrapper'>
-          {toggle ? <Form/> : <ArrDisplay/> }
+          {toggle ? <ArrDisplay/> : <Form/>}
           <InfoText/>
           <CommentSection/>
           <Output/>

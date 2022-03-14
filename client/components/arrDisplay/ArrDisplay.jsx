@@ -1,21 +1,12 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { clickStateVal, dataIDReset } from '../../actions'
+import React from 'react'
+import { useGlobalStateVal } from '../../context/useContext'
 import ArrContent from './ArrContent'
 
 export default function ArrDisplay () {
-  const arrData = useSelector(state => state.arrReducer)
-  const memorySize = useSelector(state => state.memoryReducer)
-  const dispatch = useDispatch()
+  const { arrDisplay, input, setToggle } = useGlobalStateVal()
 
-  // useEffect(() => {
-  //   console.log(arrData)
-  // }, [arrData])
-
-  function handleSubmit (e) {
-    e.preventDefault()
-    dispatch(clickStateVal(false))
-    // dispatch(dataIDReset())
+  function handleSubmit () {
+    setToggle(false)
   }
 
   return (
@@ -23,7 +14,7 @@ export default function ArrDisplay () {
       <div className='memory-div'>
         <div>
           <label htmlFor='memorySize'>Memory size: </label>
-          <span>{memorySize}</span>
+          <span>{input.memory}</span>
         </div>
       </div>
       <div className='arrDisplay-div'>
@@ -36,7 +27,7 @@ export default function ArrDisplay () {
               </tr>
             </thead>
             <tbody>
-              {arrData && arrData.map((val, idx) => {
+              {arrDisplay && arrDisplay.map((val, idx) => {
                 return (
                   <ArrContent
                     key={idx + 1}

@@ -9,5 +9,6 @@ export function getDataById (id) {
 export function getData () {
   return request
     .get('/api/v1/bfdata/')
-    .then(res => res.body)
+    .then(res => { return res.body })
+    .catch(err => console.error('GET' + err.message))
 }
